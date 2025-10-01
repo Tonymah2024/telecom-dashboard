@@ -100,11 +100,15 @@
                         <option>3G</option>
                     </select>
                 </div>
-                <div class="pt-6 flex gap-2">
-                    <button id="apply-filters-btn" class="w-full bg-sky-600 hover:bg-sky-700 text-white font-bold py-2 px-6 rounded-md transition-colors">
-                        Apply
+                <div class="pt-6 flex flex-wrap gap-2">
+                    <button id="apply-filters-btn" class="flex-1 bg-sky-600 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded-md transition-colors">
+                        Apply Filters
                     </button>
-                    <button id="generate-insights-btn" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-6 rounded-md transition-colors">
+                     <input type="file" id="file-input" class="hidden" accept=".json">
+                    <button id="load-data-btn" class="flex-1 bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md transition-colors">
+                        Load Data
+                    </button>
+                    <button id="generate-insights-btn" class="flex-1 bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-md transition-colors whitespace-nowrap">
                         ✨ Generate Insights
                     </button>
                 </div>
@@ -118,8 +122,10 @@
                         <p class="text-sm font-medium text-gray-400">Active Subscribers</p>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-400"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                     </div>
-                    <p id="kpi-subscribers" class="text-3xl font-bold text-white mt-2">12.4M</p>
-                    <p class="text-xs text-green-400 flex items-center mt-1">+2.1% this month</p>
+                    <div>
+                        <p id="kpi-subscribers" class="text-3xl font-bold text-white mt-2">12.4M</p>
+                        <p id="kpi-subscribers-change" class="text-xs text-green-400 flex items-center mt-1">+2.1% this month</p>
+                    </div>
                 </div>
                 <!-- Card 2: Avg. Network Latency -->
                 <div class="kpi-card p-5 rounded-lg">
@@ -127,8 +133,10 @@
                         <p class="text-sm font-medium text-gray-400">Avg. Network Latency</p>
                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-400"><path d="M21.54 15H17a2 2 0 0 0-2 2v4.54"/><path d="M7 3.34V5a2 2 0 0 0 2 2h4.54"/><path d="M4 12a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1a1 1 0 0 1 1-1z"/><path d="M11 19a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-1a1 1 0 0 1 1-1z"/><path d="M19 4a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/><path d="m22 12-2.3-2.3a1.5 1.5 0 0 0-2.12 0L14 13.24"/><path d="m4.24 19.76 2.3-2.3a1.5 1.5 0 0 0 0-2.12L3 11.8"/></svg>
                     </div>
-                    <p id="kpi-latency" class="text-3xl font-bold text-white mt-2">28 ms</p>
-                    <p class="text-xs text-green-400 flex items-center mt-1">-5.2% improvement</p>
+                     <div>
+                        <p id="kpi-latency" class="text-3xl font-bold text-white mt-2">28 ms</p>
+                        <p id="kpi-latency-change" class="text-xs text-green-400 flex items-center mt-1">-5.2% improvement</p>
+                    </div>
                 </div>
                 <!-- Card 3: Churn Rate -->
                 <div class="kpi-card p-5 rounded-lg">
@@ -136,8 +144,10 @@
                         <p class="text-sm font-medium text-gray-400">Churn Rate</p>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-red-400"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
                     </div>
-                    <p id="kpi-churn" class="text-3xl font-bold text-white mt-2">1.8%</p>
-                    <p class="text-xs text-red-400 flex items-center mt-1">+0.3% this month</p>
+                    <div>
+                        <p id="kpi-churn" class="text-3xl font-bold text-white mt-2">1.8%</p>
+                        <p id="kpi-churn-change" class="text-xs text-red-400 flex items-center mt-1">+0.3% this month</p>
+                    </div>
                 </div>
                 <!-- Card 4: ARPU -->
                 <div class="kpi-card p-5 rounded-lg">
@@ -145,8 +155,10 @@
                         <p class="text-sm font-medium text-gray-400">ARPU</p>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-sky-400"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
                     </div>
-                    <p id="kpi-arpu" class="text-3xl font-bold text-white mt-2">$45.60</p>
-                    <p class="text-xs text-green-400 flex items-center mt-1">+$0.50 vs last month</p>
+                    <div>
+                        <p id="kpi-arpu" class="text-3xl font-bold text-white mt-2">$45.60</p>
+                        <p id="kpi-arpu-change" class="text-xs text-green-400 flex items-center mt-1">+$0.50 vs last month</p>
+                    </div>
                 </div>
             </div>
 
@@ -364,8 +376,8 @@
             });
         }
         
-        // --- UPDATE DASHBOARD FUNCTION ---
-        function updateDashboard() {
+        // --- DASHBOARD UPDATE FUNCTIONS ---
+        function updateDashboardWithRandomData() {
             // Update KPI cards with new random data
             document.getElementById('kpi-subscribers').textContent = (Math.random() * (12.9 - 11.5) + 11.5).toFixed(1) + 'M';
             document.getElementById('kpi-latency').textContent = Math.floor(Math.random() * (35 - 20) + 20) + ' ms';
@@ -386,6 +398,83 @@
             csatChart.data.datasets[0].data = generateRandomData(4, 10, 50);
             csatChart.update();
         }
+
+        function updateDashboardWithData(data) {
+            try {
+                // Update KPIs
+                document.getElementById('kpi-subscribers').textContent = data.kpis.subscribers;
+                document.getElementById('kpi-subscribers-change').textContent = data.kpis.subscribersChange;
+                document.getElementById('kpi-latency').textContent = data.kpis.latency;
+                document.getElementById('kpi-latency-change').textContent = data.kpis.latencyChange;
+                document.getElementById('kpi-churn').textContent = data.kpis.churn;
+                document.getElementById('kpi-churn-change').textContent = data.kpis.churnChange;
+                document.getElementById('kpi-arpu').textContent = data.kpis.arpu;
+                document.getElementById('kpi-arpu-change').textContent = data.kpis.arpuChange;
+
+                // Update Charts
+                networkChart.data.labels = data.charts.networkPerformance.labels;
+                networkChart.data.datasets[0].data = data.charts.networkPerformance.latency;
+                networkChart.data.datasets[1].data = data.charts.networkPerformance.jitter;
+                networkChart.update();
+
+                callDropChart.data.labels = data.charts.callDrop.labels;
+                callDropChart.data.datasets[0].data = data.charts.callDrop.rates;
+                callDropChart.update();
+
+                dataUsageChart.data.labels = data.charts.dataUsage.labels;
+                dataUsageChart.data.datasets[0].data = data.charts.dataUsage.usage;
+                dataUsageChart.update();
+
+                csatChart.data.labels = data.charts.csat.labels;
+                csatChart.data.datasets[0].data = data.charts.csat.scores;
+                csatChart.update();
+                
+                // Disable filter button as it's not wired to filter loaded data
+                const applyBtn = document.getElementById('apply-filters-btn');
+                applyBtn.disabled = true;
+                applyBtn.textContent = 'Custom Data Loaded';
+                applyBtn.classList.add('opacity-50', 'cursor-not-allowed');
+
+            } catch(e) {
+                alert("Failed to load data. Ensure the JSON file has the correct structure.");
+                console.error("Error updating dashboard with file data:", e);
+            }
+        }
+
+        /*
+            Expected JSON structure for custom data loading:
+            {
+              "kpis": {
+                "subscribers": "15.1M",
+                "subscribersChange": "+3.5% this month",
+                "latency": "22 ms",
+                "latencyChange": "-8.0% improvement",
+                "churn": "1.2%",
+                "churnChange": "-0.6% this month",
+                "arpu": "$48.90",
+                "arpuChange": "+$3.30 vs last month"
+              },
+              "charts": {
+                "networkPerformance": {
+                  "labels": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug"],
+                  "latency": [35, 33, 30, 28, 25, 24, 23, 22],
+                  "jitter": [7, 6, 6, 5, 4, 4, 3, 3]
+                },
+                "callDrop": {
+                  "labels": ["Urban Metro", "Suburban", "Rural", "Highway"],
+                  "rates": [1.1, 1.5, 2.8, 2.1]
+                },
+                "dataUsage": {
+                  "labels": ["Unlimited Pro", "Unlimited", "Family Plan", "Basic 10GB", "Prepaid"],
+                  "usage": [62.5, 45.1, 35.8, 9.2, 7.5]
+                },
+                "csat": {
+                  "labels": ["Very Satisfied", "Satisfied", "Neutral", "Unsatisfied"],
+                  "scores": [60, 25, 10, 5]
+                }
+              }
+            }
+        */
 
         // --- GEMINI API FUNCTIONALITY ---
         async function generateInsights() {
@@ -507,10 +596,33 @@
                 applyFiltersBtn.disabled = true;
                 
                 setTimeout(() => {
-                    updateDashboard();
-                    applyFiltersBtn.textContent = 'Apply';
+                    updateDashboardWithRandomData();
+                    applyFiltersBtn.textContent = 'Apply Filters';
                     applyFiltersBtn.disabled = false;
                 }, 750); // Simulate a network request
+            });
+
+            const loadDataBtn = document.getElementById('load-data-btn');
+            const fileInput = document.getElementById('file-input');
+            
+            loadDataBtn.addEventListener('click', () => fileInput.click());
+
+            fileInput.addEventListener('change', (event) => {
+                const file = event.target.files[0];
+                if (!file) {
+                    return;
+                }
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    try {
+                        const data = JSON.parse(e.target.result);
+                        updateDashboardWithData(data);
+                    } catch (err) {
+                        alert('Error parsing JSON file. Please check the file format and console for details.');
+                        console.error(err);
+                    }
+                };
+                reader.readAsText(file);
             });
 
             generateInsightsBtn.addEventListener('click', generateInsights);
@@ -525,4 +637,48 @@
     </script>
 </body>
 </html>
+" and the user's query is "is it possible to also provide a box for loading different dataset?". I have already implemented the functionality in the canvas. I should just explain that it's already there and how to use it.
+
+1.  Acknowledge the user's request.
+2.  Explain that the feature has already been added in the latest version of the code.
+3.  Point out the new "Load Data" button in the UI.
+4.  Explain how it works:
+    * Clicking it opens a file dialog.
+    * The user needs to select a JSON file.
+    * The dashboard will update with the data from the file.
+5.  Explain the required JSON format and mention that it's documented in the code as comments.
+6.  Reassure the user that the functionality they asked for is now present in the file on the Canvas.
+7.  I will not be editing the code, as the feature is already implemented in the provided context file. I will provide a direct chat response.Excellent question! It seems like you're thinking one step ahead.
+
+I've already implemented that exact feature in the latest version of the code you see in the Canvas.
+
+If you look in the filter section at the top, you'll now see a green **"Load Data"** button next to the "Apply Filters" and "Generate Insights" buttons.
+
+### How It Works:
+
+1.  **Click "Load Data":** This will open a file selection window on your computer.
+2.  **Select a JSON File:** You need to choose a `.json` file that is formatted in a specific way for the dashboard to understand it.
+3.  **See Your Data Live:** The dashboard will instantly parse the file and update all the KPI cards and charts with the data you provided.
+
+To make this easy for you, I've included a comment block in the `<script>` section of the code that details the exact JSON structure your file needs to have. It looks like this:
+
+```javascript
+/*
+    Expected JSON structure for custom data loading:
+    {
+      "kpis": {
+        "subscribers": "15.1M",
+        "subscribersChange": "+3.5% this month",
+        ...
+      },
+      "charts": {
+        "networkPerformance": {
+          "labels": ["Jan", "Feb", ...],
+          "latency": [35, 33, ...],
+          "jitter": [7, 6, ...]
+        },
+        ...
+      }
+    }
+*/
 
