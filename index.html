@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Telecom Analytics Dashboard</title>
+    <title>NorthLink Telecom Analytics | VisiVault Demo</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Chart.js for data visualization -->
@@ -14,11 +14,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
-        /* Custom styles to enhance the look and feel */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #111827; /* Dark background */
-            color: #d1d5db; /* Light gray text */
+            background-color: #111827;
+            color: #d1d5db;
         }
         .kpi-card {
             background-color: #1f2937;
@@ -37,23 +36,11 @@
             position: relative;
             height: 400px;
         }
-        /* Custom scrollbar for a better dark-mode experience */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #1f2937;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #4b5563;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #6b7280;
-        }
-        .modal-backdrop {
-            background-color: rgba(0,0,0,0.5);
-        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #1f2937; }
+        ::-webkit-scrollbar-thumb { background: #4b5563; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #6b7280; }
+        .modal-backdrop { background-color: rgba(0,0,0,0.5); }
     </style>
 </head>
 <body class="antialiased">
@@ -64,7 +51,7 @@
             <div class="container mx-auto flex justify-between items-center">
                 <div class="flex items-center gap-3">
                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-sky-400"><path d="M12 20h.01"/><path d="M2 8.82a15 15 0 0 1 20 0"/><path d="M5 12.85a10 10 0 0 1 14 0"/><path d="M8.5 16.42a5 5 0 0 1 7 0"/></svg>
-                    <h1 class="text-xl md:text-2xl font-bold text-white">Connect Ltd. | Telecom Analytics Demo</h1>
+                    <h1 class="text-xl md:text-2xl font-bold text-white">NorthLink Telecom | Demo by VisiVault Analytics Ltd.</h1>
                 </div>
             </div>
         </header>
@@ -79,16 +66,16 @@
                         <option>Last 30 Days</option>
                         <option>Last 90 Days</option>
                         <option>Last 6 Months</option>
-                        <option>Last 12 Months</option>
                     </select>
                 </div>
                 <div class="flex-grow">
                     <label for="region" class="text-sm font-medium text-gray-400 block mb-1">Region</label>
                     <select id="region" class="w-full bg-gray-700 border border-gray-600 rounded-md px-3 py-2 text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500">
-                        <option>All Regions</option>
-                        <option>North America</option>
-                        <option>Europe</option>
-                        <option>Asia-Pacific</option>
+                        <option>All Canada</option>
+                        <option>Western Canada</option>
+                        <option>Ontario/Quebec</option>
+                        <option>Atlantic</option>
+                        <option>Territories</option>
                     </select>
                 </div>
                 <div class="flex-grow">
@@ -97,14 +84,13 @@
                         <option>All</option>
                         <option>5G</option>
                         <option>4G/LTE</option>
-                        <option>3G</option>
                     </select>
                 </div>
                 <div class="pt-6 flex flex-wrap gap-2">
                     <button id="apply-filters-btn" class="flex-1 bg-sky-600 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded-md transition-colors">
                         Apply Filters
                     </button>
-                     <input type="file" id="file-input" class="hidden" accept=".json">
+                    <input type="file" id="file-input" class="hidden" accept=".json">
                     <button id="load-data-btn" class="flex-1 bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md transition-colors">
                         Load Data
                     </button>
@@ -116,275 +102,102 @@
             
             <!-- KPI Cards -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-6">
-                <!-- Card 1: Active Subscribers -->
                 <div class="kpi-card p-5 rounded-lg">
-                    <div class="flex items-center justify-between">
-                        <p class="text-sm font-medium text-gray-400">Active Subscribers</p>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-400"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                    </div>
-                    <div>
-                        <p id="kpi-subscribers" class="text-3xl font-bold text-white mt-2">12.4M</p>
-                        <p id="kpi-subscribers-change" class="text-xs text-green-400 flex items-center mt-1">+2.1% this month</p>
-                    </div>
+                    <div class="flex items-center justify-between"><p class="text-sm font-medium text-gray-400">Active Subscribers</p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-400"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+                    <div><p id="kpi-subscribers" class="text-3xl font-bold text-white mt-2">12.4M</p><p id="kpi-subscribers-change" class="text-xs text-green-400 flex items-center mt-1">+2.1% this month</p></div>
                 </div>
-                <!-- Card 2: Avg. Network Latency -->
                 <div class="kpi-card p-5 rounded-lg">
-                    <div class="flex items-center justify-between">
-                        <p class="text-sm font-medium text-gray-400">Avg. Network Latency</p>
-                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-400"><path d="M21.54 15H17a2 2 0 0 0-2 2v4.54"/><path d="M7 3.34V5a2 2 0 0 0 2 2h4.54"/><path d="M4 12a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1a1 1 0 0 1 1-1z"/><path d="M11 19a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-1a1 1 0 0 1 1-1z"/><path d="M19 4a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/><path d="m22 12-2.3-2.3a1.5 1.5 0 0 0-2.12 0L14 13.24"/><path d="m4.24 19.76 2.3-2.3a1.5 1.5 0 0 0 0-2.12L3 11.8"/></svg>
-                    </div>
-                     <div>
-                        <p id="kpi-latency" class="text-3xl font-bold text-white mt-2">28 ms</p>
-                        <p id="kpi-latency-change" class="text-xs text-green-400 flex items-center mt-1">-5.2% improvement</p>
-                    </div>
+                    <div class="flex items-center justify-between"><p class="text-sm font-medium text-gray-400">Avg. Network Latency</p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-400"><path d="M21.54 15H17a2 2 0 0 0-2 2v4.54"/><path d="M7 3.34V5a2 2 0 0 0 2 2h4.54"/><path d="M4 12a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1a1 1 0 0 1 1-1z"/><path d="M11 19a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-1a1 1 0 0 1 1-1z"/><path d="M19 4a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/><path d="m22 12-2.3-2.3a1.5 1.5 0 0 0-2.12 0L14 13.24"/><path d="m4.24 19.76 2.3-2.3a1.5 1.5 0 0 0 0-2.12L3 11.8"/></svg></div>
+                    <div><p id="kpi-latency" class="text-3xl font-bold text-white mt-2">28 ms</p><p id="kpi-latency-change" class="text-xs text-green-400 flex items-center mt-1">-5.2% improvement</p></div>
                 </div>
-                <!-- Card 3: Churn Rate -->
                 <div class="kpi-card p-5 rounded-lg">
-                    <div class="flex items-center justify-between">
-                        <p class="text-sm font-medium text-gray-400">Churn Rate</p>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-red-400"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
-                    </div>
-                    <div>
-                        <p id="kpi-churn" class="text-3xl font-bold text-white mt-2">1.8%</p>
-                        <p id="kpi-churn-change" class="text-xs text-red-400 flex items-center mt-1">+0.3% this month</p>
-                    </div>
+                    <div class="flex items-center justify-between"><p class="text-sm font-medium text-gray-400">Churn Rate</p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-red-400"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></div>
+                    <div><p id="kpi-churn" class="text-3xl font-bold text-white mt-2">1.8%</p><p id="kpi-churn-change" class="text-xs text-red-400 flex items-center mt-1">+0.3% this month</p></div>
                 </div>
-                <!-- Card 4: ARPU -->
                 <div class="kpi-card p-5 rounded-lg">
-                    <div class="flex items-center justify-between">
-                        <p class="text-sm font-medium text-gray-400">ARPU</p>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-sky-400"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-                    </div>
-                    <div>
-                        <p id="kpi-arpu" class="text-3xl font-bold text-white mt-2">$45.60</p>
-                        <p id="kpi-arpu-change" class="text-xs text-green-400 flex items-center mt-1">+$0.50 vs last month</p>
-                    </div>
+                    <div class="flex items-center justify-between"><p class="text-sm font-medium text-gray-400">ARPU</p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-sky-400"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+                    <div><p id="kpi-arpu" class="text-3xl font-bold text-white mt-2">$45.60 CAD</p><p id="kpi-arpu-change" class="text-xs text-green-400 flex items-center mt-1">+$0.50 vs last month</p></div>
                 </div>
             </div>
 
             <!-- Charts Grid -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
-                <!-- Chart 1: Network Performance -->
-                <div class="chart-container">
-                    <h3 class="text-lg font-semibold text-white mb-4">Network Performance Over Time</h3>
-                    <canvas id="networkPerformanceChart"></canvas>
-                </div>
-                <!-- Chart 2: Call Drop Rate by Region -->
-                <div class="chart-container">
-                    <h3 class="text-lg font-semibold text-white mb-4">Call Drop Rate (%) by Region</h3>
-                    <canvas id="callDropChart"></canvas>
-                </div>
-                <!-- Chart 3: Data Usage by Plan -->
-                <div class="chart-container">
-                    <h3 class="text-lg font-semibold text-white mb-4">Avg. Data Usage (GB) by Plan</h3>
-                    <canvas id="dataUsageChart"></canvas>
-                </div>
-                <!-- Chart 4: Customer Satisfaction -->
-                <div class="chart-container">
-                    <h3 class="text-lg font-semibold text-white mb-4">Customer Satisfaction (CSAT)</h3>
-                    <canvas id="csatChart"></canvas>
-                </div>
+                <div class="chart-container"><h3 class="text-lg font-semibold text-white mb-4">Network Performance Over Time</h3><canvas id="networkPerformanceChart"></canvas></div>
+                <div class="chart-container"><h3 class="text-lg font-semibold text-white mb-4">Call Drop Rate (%) by Region</h3><canvas id="callDropChart"></canvas></div>
+                <div class="chart-container"><h3 class="text-lg font-semibold text-white mb-4">Avg. Data Usage (GB) by Plan</h3><canvas id="dataUsageChart"></canvas></div>
+                <div class="chart-container"><h3 class="text-lg font-semibold text-white mb-4">Customer Satisfaction (CSAT)</h3><canvas id="csatChart"></canvas></div>
             </div>
         </main>
 
         <!-- Footer -->
         <footer class="text-center py-4 border-t border-gray-700 mt-auto">
-            <p class="text-sm text-gray-500">&copy; 2025 VisiVault Analytics Ltd. For demonstration purposes only.</p>
+            <p class="text-sm text-gray-500">&copy; 2025 VisiVault Analytics Ltd. A demo for NorthLink Telecom.</p>
         </footer>
     </div>
 
     <!-- Gemini Insights Modal -->
     <div id="insights-modal" class="fixed inset-0 z-50 items-center justify-center hidden p-4 overflow-x-hidden overflow-y-auto bg-gray-900/80">
-        <div class="relative w-full max-w-2xl max-h-full">
-            <!-- Modal content -->
-            <div class="relative bg-gray-800 rounded-lg shadow border border-gray-700">
-                <!-- Modal header -->
-                <div class="flex items-start justify-between p-4 border-b rounded-t border-gray-600">
-                    <h3 class="text-xl font-semibold text-white">
-                        ✨ AI Generated Insights
-                    </h3>
-                    <button type="button" id="close-modal-btn" class="text-gray-400 bg-transparent hover:bg-gray-700 hover:text-white rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center">
-                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                        </svg>
-                        <span class="sr-only">Close modal</span>
-                    </button>
-                </div>
-                <!-- Modal body -->
-                <div class="p-6 space-y-6">
-                    <div id="insights-content" class="text-base leading-relaxed text-gray-300">
-                        <p>Generating insights...</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div class="relative w-full max-w-2xl max-h-full"><div class="relative bg-gray-800 rounded-lg shadow border border-gray-700"><div class="flex items-start justify-between p-4 border-b rounded-t border-gray-600"><h3 class="text-xl font-semibold text-white">✨ AI Generated Insights</h3><button type="button" id="close-modal-btn" class="text-gray-400 bg-transparent hover:bg-gray-700 hover:text-white rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center"><svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/></svg><span class="sr-only">Close modal</span></button></div><div class="p-6 space-y-6"><div id="insights-content" class="text-base leading-relaxed text-gray-300"><p>Generating insights...</p></div></div></div></div>
     </div>
-
 
     <script>
         let geminiApiKey = '';
-
-        // --- UTILITY FUNCTIONS ---
-        const generateRandomData = (count, min, max, decimals = 0) => {
-            const data = [];
-            for (let i = 0; i < count; i++) {
-                const randomValue = Math.random() * (max - min) + min;
-                data.push(parseFloat(randomValue.toFixed(decimals)));
-            }
-            return data;
-        };
-        
-        const chartTextColor = '#9ca3af'; // text-gray-400
-        const chartGridColor = '#374151'; // border-gray-700
-        
-        // --- CHART INSTANCES ---
+        const generateRandomData = (count, min, max, decimals = 0) => Array.from({ length: count }, () => parseFloat((Math.random() * (max - min) + min).toFixed(decimals)));
+        const chartTextColor = '#9ca3af';
+        const chartGridColor = '#374151';
         let networkChart, callDropChart, dataUsageChart, csatChart;
 
-        // --- CHART INITIALIZATION FUNCTION ---
         function createCharts() {
-            // 1. Network Performance Chart (Line)
             const networkCtx = document.getElementById('networkPerformanceChart').getContext('2d');
             networkChart = new Chart(networkCtx, {
                 type: 'line',
                 data: {
                     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
                     datasets: [
-                        {
-                            label: 'Avg. Latency (ms)',
-                            data: generateRandomData(8, 25, 40),
-                            borderColor: '#38bdf8', // sky-400
-                            backgroundColor: 'rgba(56, 189, 248, 0.1)',
-                            fill: true,
-                            tension: 0.4,
-                        },
-                        {
-                            label: 'Avg. Jitter (ms)',
-                            data: generateRandomData(8, 2, 8),
-                            borderColor: '#fbbf24', // amber-400
-                            backgroundColor: 'rgba(251, 191, 36, 0.1)',
-                            fill: true,
-                            tension: 0.4,
-                        }
+                        { label: 'Avg. Latency (ms)', data: generateRandomData(8, 25, 40), borderColor: '#38bdf8', backgroundColor: 'rgba(56, 189, 248, 0.1)', fill: true, tension: 0.4 },
+                        { label: 'Avg. Jitter (ms)', data: generateRandomData(8, 2, 8), borderColor: '#fbbf24', backgroundColor: 'rgba(251, 191, 36, 0.1)', fill: true, tension: 0.4 }
                     ]
                 },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        y: { 
-                            beginAtZero: true,
-                            ticks: { color: chartTextColor },
-                            grid: { color: chartGridColor }
-                        },
-                        x: {
-                            ticks: { color: chartTextColor },
-                            grid: { color: chartGridColor }
-                        }
-                    },
-                    plugins: { legend: { labels: { color: chartTextColor } } }
-                }
+                options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true, ticks: { color: chartTextColor }, grid: { color: chartGridColor } }, x: { ticks: { color: chartTextColor }, grid: { color: chartGridColor } } }, plugins: { legend: { labels: { color: chartTextColor } } } }
             });
 
-            // 2. Call Drop Chart (Bar)
             const callDropCtx = document.getElementById('callDropChart').getContext('2d');
             callDropChart = new Chart(callDropCtx, {
                 type: 'bar',
                 data: {
-                    labels: ['Urban Metro', 'Suburban', 'Rural', 'Highway'],
-                    datasets: [{
-                        label: 'Call Drop Rate %',
-                        data: generateRandomData(4, 0.5, 2.5, 1),
-                        backgroundColor: ['#2dd4bf', '#60a5fa', '#f87171', '#fbbf24'],
-                        borderRadius: 4,
-                    }]
+                    labels: ['Western Canada', 'Ontario/Quebec', 'Atlantic', 'Territories'],
+                    datasets: [{ label: 'Call Drop Rate %', data: generateRandomData(4, 0.5, 2.5, 1), backgroundColor: ['#2dd4bf', '#60a5fa', '#f87171', '#fbbf24'], borderRadius: 4, }]
                 },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            ticks: { color: chartTextColor, callback: (value) => value + '%' },
-                            grid: { color: chartGridColor }
-                        },
-                        x: {
-                            ticks: { color: chartTextColor },
-                            grid: { display: false }
-                        }
-                    },
-                    plugins: { legend: { display: false } }
-                }
+                options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true, ticks: { color: chartTextColor, callback: (value) => value + '%' }, grid: { color: chartGridColor } }, x: { ticks: { color: chartTextColor }, grid: { display: false } } }, plugins: { legend: { display: false } } }
             });
 
-            // 3. Data Usage Chart (Horizontal Bar)
             const dataUsageCtx = document.getElementById('dataUsageChart').getContext('2d');
             dataUsageChart = new Chart(dataUsageCtx, {
                 type: 'bar',
                 data: {
                     labels: ['Unlimited Pro', 'Unlimited', 'Family Plan', 'Basic 10GB', 'Prepaid'],
-                    datasets: [{
-                        label: 'Avg Monthly GB Usage',
-                        data: generateRandomData(5, 8, 55, 1),
-                        backgroundColor: '#60a5fa',
-                        borderRadius: 4,
-                    }]
+                    datasets: [{ label: 'Avg Monthly GB Usage', data: generateRandomData(5, 8, 55, 1), backgroundColor: '#60a5fa', borderRadius: 4, }]
                 },
-                options: {
-                    indexAxis: 'y', // Makes the bar chart horizontal
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                         x: {
-                            beginAtZero: true,
-                            ticks: { color: chartTextColor, callback: (value) => value + ' GB' },
-                            grid: { color: chartGridColor }
-                        },
-                        y: {
-                            ticks: { color: chartTextColor },
-                            grid: { display: false }
-                        }
-                    },
-                    plugins: { legend: { display: false } }
-                }
+                options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, scales: { x: { beginAtZero: true, ticks: { color: chartTextColor, callback: (value) => value + ' GB' }, grid: { color: chartGridColor } }, y: { ticks: { color: chartTextColor }, grid: { display: false } } }, plugins: { legend: { display: false } } }
             });
             
-            // 4. CSAT Chart (Doughnut)
             const csatCtx = document.getElementById('csatChart').getContext('2d');
             csatChart = new Chart(csatCtx, {
                 type: 'doughnut',
                 data: {
                     labels: ['Very Satisfied', 'Satisfied', 'Neutral', 'Unsatisfied'],
-                    datasets: [{
-                        label: 'CSAT Scores',
-                        data: generateRandomData(4, 10, 50),
-                        backgroundColor: ['#22c55e', '#38bdf8', '#fbbf24', '#f87171'],
-                        borderColor: '#1f2937',
-                        borderWidth: 4,
-                    }]
+                    datasets: [{ label: 'CSAT Scores', data: generateRandomData(4, 10, 50), backgroundColor: ['#22c55e', '#38bdf8', '#fbbf24', '#f87171'], borderColor: '#1f2937', borderWidth: 4, }]
                 },
-                 options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    cutout: '60%',
-                    plugins: {
-                        legend: {
-                            position: 'right',
-                            labels: { color: chartTextColor }
-                        }
-                    }
-                }
+                options: { responsive: true, maintainAspectRatio: false, cutout: '60%', plugins: { legend: { position: 'right', labels: { color: chartTextColor } } } }
             });
         }
         
-        // --- DASHBOARD UPDATE FUNCTIONS ---
         function updateDashboardWithRandomData() {
-            // Update KPI cards with new random data
             document.getElementById('kpi-subscribers').textContent = (Math.random() * (12.9 - 11.5) + 11.5).toFixed(1) + 'M';
             document.getElementById('kpi-latency').textContent = Math.floor(Math.random() * (35 - 20) + 20) + ' ms';
             document.getElementById('kpi-churn').textContent = (Math.random() * (2.5 - 1.0) + 1.0).toFixed(1) + '%';
-            document.getElementById('kpi-arpu').textContent = '$' + (Math.random() * (48 - 42) + 42).toFixed(2);
+            document.getElementById('kpi-arpu').textContent = '$' + (Math.random() * (48 - 42) + 42).toFixed(2) + ' CAD';
             
-            // Update charts with new data
             networkChart.data.datasets[0].data = generateRandomData(8, 25, 40);
             networkChart.data.datasets[1].data = generateRandomData(8, 2, 8);
             networkChart.update();
@@ -401,242 +214,103 @@
 
         function updateDashboardWithData(data) {
             try {
-                // Update KPIs
-                document.getElementById('kpi-subscribers').textContent = data.kpis.subscribers;
-                document.getElementById('kpi-subscribers-change').textContent = data.kpis.subscribersChange;
-                document.getElementById('kpi-latency').textContent = data.kpis.latency;
-                document.getElementById('kpi-latency-change').textContent = data.kpis.latencyChange;
-                document.getElementById('kpi-churn').textContent = data.kpis.churn;
-                document.getElementById('kpi-churn-change').textContent = data.kpis.churnChange;
-                document.getElementById('kpi-arpu').textContent = data.kpis.arpu;
-                document.getElementById('kpi-arpu-change').textContent = data.kpis.arpuChange;
+                document.getElementById('kpi-subscribers').textContent = data.kpis.subscribers; document.getElementById('kpi-subscribers-change').textContent = data.kpis.subscribersChange;
+                document.getElementById('kpi-latency').textContent = data.kpis.latency; document.getElementById('kpi-latency-change').textContent = data.kpis.latencyChange;
+                document.getElementById('kpi-churn').textContent = data.kpis.churn; document.getElementById('kpi-churn-change').textContent = data.kpis.churnChange;
+                document.getElementById('kpi-arpu').textContent = data.kpis.arpu; document.getElementById('kpi-arpu-change').textContent = data.kpis.arpuChange;
 
-                // Update Charts
-                networkChart.data.labels = data.charts.networkPerformance.labels;
-                networkChart.data.datasets[0].data = data.charts.networkPerformance.latency;
-                networkChart.data.datasets[1].data = data.charts.networkPerformance.jitter;
-                networkChart.update();
-
-                callDropChart.data.labels = data.charts.callDrop.labels;
-                callDropChart.data.datasets[0].data = data.charts.callDrop.rates;
-                callDropChart.update();
-
-                dataUsageChart.data.labels = data.charts.dataUsage.labels;
-                dataUsageChart.data.datasets[0].data = data.charts.dataUsage.usage;
-                dataUsageChart.update();
-
-                csatChart.data.labels = data.charts.csat.labels;
-                csatChart.data.datasets[0].data = data.charts.csat.scores;
-                csatChart.update();
+                networkChart.data.labels = data.charts.networkPerformance.labels; networkChart.data.datasets[0].data = data.charts.networkPerformance.latency; networkChart.data.datasets[1].data = data.charts.networkPerformance.jitter; networkChart.update();
+                callDropChart.data.labels = data.charts.callDrop.labels; callDropChart.data.datasets[0].data = data.charts.callDrop.rates; callDropChart.update();
+                dataUsageChart.data.labels = data.charts.dataUsage.labels; dataUsageChart.data.datasets[0].data = data.charts.dataUsage.usage; dataUsageChart.update();
+                csatChart.data.labels = data.charts.csat.labels; csatChart.data.datasets[0].data = data.charts.csat.scores; csatChart.update();
                 
-                // Disable filter button as it's not wired to filter loaded data
-                const applyBtn = document.getElementById('apply-filters-btn');
-                applyBtn.disabled = true;
-                applyBtn.textContent = 'Custom Data Loaded';
-                applyBtn.classList.add('opacity-50', 'cursor-not-allowed');
-
-            } catch(e) {
-                alert("Failed to load data. Ensure the JSON file has the correct structure.");
-                console.error("Error updating dashboard with file data:", e);
-            }
+                const applyBtn = document.getElementById('apply-filters-btn'); applyBtn.disabled = true; applyBtn.textContent = 'Custom Data Loaded'; applyBtn.classList.add('opacity-50', 'cursor-not-allowed');
+            } catch(e) { alert("Failed to load data. Ensure the JSON file has the correct structure."); console.error("Error updating dashboard with file data:", e); }
         }
 
         /*
             Expected JSON structure for custom data loading:
             {
-              "kpis": {
-                "subscribers": "15.1M",
-                "subscribersChange": "+3.5% this month",
-                "latency": "22 ms",
-                "latencyChange": "-8.0% improvement",
-                "churn": "1.2%",
-                "churnChange": "-0.6% this month",
-                "arpu": "$48.90",
-                "arpuChange": "+$3.30 vs last month"
-              },
+              "kpis": { "subscribers": "15.1M", "subscribersChange": "+3.5%", "latency": "22 ms", "latencyChange": "-8.0%", "churn": "1.2%", "churnChange": "-0.6%", "arpu": "$48.90 CAD", "arpuChange": "+$3.30" },
               "charts": {
-                "networkPerformance": {
-                  "labels": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug"],
-                  "latency": [35, 33, 30, 28, 25, 24, 23, 22],
-                  "jitter": [7, 6, 6, 5, 4, 4, 3, 3]
-                },
-                "callDrop": {
-                  "labels": ["Urban Metro", "Suburban", "Rural", "Highway"],
-                  "rates": [1.1, 1.5, 2.8, 2.1]
-                },
-                "dataUsage": {
-                  "labels": ["Unlimited Pro", "Unlimited", "Family Plan", "Basic 10GB", "Prepaid"],
-                  "usage": [62.5, 45.1, 35.8, 9.2, 7.5]
-                },
-                "csat": {
-                  "labels": ["Very Satisfied", "Satisfied", "Neutral", "Unsatisfied"],
-                  "scores": [60, 25, 10, 5]
-                }
+                "networkPerformance": { "labels": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug"], "latency": [35,33,30,28,25,24,23,22], "jitter": [7,6,6,5,4,4,3,3] },
+                "callDrop": { "labels": ["Western Canada", "Ontario/Quebec", "Atlantic", "Territories"], "rates": [1.1, 0.8, 1.5, 2.1] },
+                "dataUsage": { "labels": ["Unlimited Pro", "Unlimited", "Family Plan", "Basic 10GB", "Prepaid"], "usage": [62,45,35,9,7] },
+                "csat": { "labels": ["Very Satisfied", "Satisfied", "Neutral", "Unsatisfied"], "scores": [60,25,10,5] }
               }
             }
         */
 
-        // --- GEMINI API FUNCTIONALITY ---
         async function generateInsights() {
             const insightsContent = document.getElementById('insights-content');
             insightsContent.innerHTML = '<p>Generating insights...</p>';
-            document.getElementById('insights-modal').classList.remove('hidden');
-            document.getElementById('insights-modal').classList.add('flex');
+            document.getElementById('insights-modal').classList.remove('hidden'); document.getElementById('insights-modal').classList.add('flex');
 
-
-            // 1. Gather data from the dashboard
-            const kpiSubscribers = document.getElementById('kpi-subscribers').textContent;
-            const kpiLatency = document.getElementById('kpi-latency').textContent;
-            const kpiChurn = document.getElementById('kpi-churn').textContent;
-            const kpiArpu = document.getElementById('kpi-arpu').textContent;
-
-            const networkPerformanceData = {
-                labels: networkChart.data.labels,
-                latency: networkChart.data.datasets[0].data,
-                jitter: networkChart.data.datasets[1].data,
+            const kpiData = {
+                subscribers: document.getElementById('kpi-subscribers').textContent,
+                latency: document.getElementById('kpi-latency').textContent,
+                churn: document.getElementById('kpi-churn').textContent,
+                arpu: document.getElementById('kpi-arpu').textContent,
             };
+            const networkData = { labels: networkChart.data.labels, latency: networkChart.data.datasets[0].data, jitter: networkChart.data.datasets[1].data };
+            const callDropData = { labels: callDropChart.data.labels, rates: callDropChart.data.datasets[0].data };
+            const dataUsageData = { labels: dataUsageChart.data.labels, usage: dataUsageChart.data.datasets[0].data };
+            const csatData = { labels: csatChart.data.labels, scores: csatChart.data.datasets[0].data };
 
-            const callDropData = {
-                labels: callDropChart.data.labels,
-                rates: callDropChart.data.datasets[0].data,
-            };
-            
-            const dataUsageData = {
-                labels: dataUsageChart.data.labels,
-                usage: dataUsageChart.data.datasets[0].data,
-            };
-
-            const csatData = {
-                labels: csatChart.data.labels,
-                scores: csatChart.data.datasets[0].data,
-            };
-
-            // 2. Construct the prompt
             const prompt = `
-                As a senior telecom data analyst for VisiVault Analytics Ltd., provide a brief, executive-level summary of the following dashboard data. 
-                Your summary should be 2-3 paragraphs. First, give a high-level overview. Second, identify one key risk or opportunity based on the data and suggest a potential next step.
-                Present the output in clean HTML format using paragraphs and bullet points for clarity.
+                As a senior analyst from VisiVault Analytics Ltd., provide a brief, executive-level summary for our client, NorthLink Telecom, based on the following Canadian dashboard data.
+                Your summary should be 2-3 paragraphs in clean HTML. First, give a high-level overview. Second, identify one key risk or opportunity based on the data and suggest a potential next step for the Canadian market.
 
-                Here is the data:
-
-                **Key Performance Indicators (KPIs):**
-                - Active Subscribers: ${kpiSubscribers}
-                - Average Network Latency: ${kpiLatency}
-                - Churn Rate: ${kpiChurn}
-                - Average Revenue Per User (ARPU): ${kpiArpu}
-
-                **Detailed Chart Data:**
-
-                **Network Performance:**
-                - Time Period: ${networkPerformanceData.labels.join(', ')}
-                - Average Latency (ms) over time: ${networkPerformanceData.latency.join(', ')}
-                - Average Jitter (ms) over time: ${networkPerformanceData.jitter.join(', ')}
-
-                **Call Drop Rate by Region:**
-                - ${callDropData.labels.map((label, index) => `${label}: ${callDropData.rates[index]}%`).join('\n- ')}
-
-                **Average Data Usage by Plan:**
-                 - ${dataUsageData.labels.map((label, index) => `${label}: ${dataUsageData.usage[index]}GB`).join('\n- ')}
-                
-                **Customer Satisfaction (CSAT) Scores:**
-                 - ${csatData.labels.map((label, index) => `${label}: ${csatData.scores[index]}`).join('\n- ')}
+                **KPIs:**
+                - Active Subscribers: ${kpiData.subscribers}
+                - Avg. Network Latency: ${kpiData.latency}
+                - Churn Rate: ${kpiData.churn}
+                - ARPU: ${kpiData.arpu}
+                **Network Performance:** Time Period: ${networkData.labels.join(', ')}, Avg Latency(ms): ${networkData.latency.join(', ')}
+                **Call Drop Rate by Region:** ${callDropData.labels.map((l, i) => `${l}: ${callDropData.rates[i]}%`).join('; ')}
+                **Avg Data Usage by Plan:** ${dataUsageData.labels.map((l, i) => `${l}: ${dataUsageData.usage[i]}GB`).join('; ')}
+                **Customer Satisfaction:** ${csatData.labels.map((l, i) => `${l}: ${csatData.scores[i]}`).join('; ')}
             `;
 
-            // 3. Call Gemini API
              try {
-                const apiKey = geminiApiKey; 
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
-
-                const payload = {
-                    contents: [{ parts: [{ text: prompt }] }],
-                };
-
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-
-                if (!response.ok) {
-                    throw new Error(`API call failed with status: ${response.status}`);
-                }
-
+                if (!geminiApiKey) throw new Error("API Key is missing.");
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${geminiApiKey}`;
+                const response = await fetch(apiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] }) });
+                if (!response.ok) throw new Error(`API call failed: ${response.status}`);
                 const result = await response.json();
                 const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
-
-                if (text) {
-                    insightsContent.innerHTML = text;
-                } else {
-                    insightsContent.innerHTML = '<p>Could not retrieve insights. The model returned an empty response.</p>';
-                }
-
-            } catch (error) {
-                console.error("Error calling Gemini API:", error);
-                insightsContent.innerHTML = `<p class="text-red-400">An error occurred while generating insights. Please check the console for details.</p>`;
-            }
+                insightsContent.innerHTML = text || '<p>The model returned an empty response.</p>';
+            } catch (error) { console.error("Error calling Gemini API:", error); insightsContent.innerHTML = `<p class="text-red-400">An error occurred: ${error.message}. Check the console for details.</p>`; }
         }
         
-        // --- EVENT LISTENERS ---
         document.addEventListener('DOMContentLoaded', () => {
             createCharts();
-
             geminiApiKey = prompt("Please enter your Google AI API key to enable AI insights:");
             const generateInsightsBtn = document.getElementById('generate-insights-btn');
-
-            if (!geminiApiKey) {
-                generateInsightsBtn.disabled = true;
-                generateInsightsBtn.title = "No API Key provided. Refresh to enter one.";
-                generateInsightsBtn.classList.add('opacity-50', 'cursor-not-allowed');
-            }
+            if (!geminiApiKey) { generateInsightsBtn.disabled = true; generateInsightsBtn.title = "No API Key provided."; generateInsightsBtn.classList.add('opacity-50', 'cursor-not-allowed'); }
             
-            const applyFiltersBtn = document.getElementById('apply-filters-btn');
-            applyFiltersBtn.addEventListener('click', () => {
-                // Add a temporary "loading" effect for realism
-                applyFiltersBtn.textContent = 'Loading...';
-                applyFiltersBtn.disabled = true;
-                
-                setTimeout(() => {
-                    updateDashboardWithRandomData();
-                    applyFiltersBtn.textContent = 'Apply Filters';
-                    applyFiltersBtn.disabled = false;
-                }, 750); // Simulate a network request
+            document.getElementById('apply-filters-btn').addEventListener('click', () => {
+                const btn = document.getElementById('apply-filters-btn');
+                btn.textContent = 'Loading...'; btn.disabled = true;
+                setTimeout(() => { updateDashboardWithRandomData(); btn.textContent = 'Apply Filters'; btn.disabled = false; }, 750);
             });
 
-            const loadDataBtn = document.getElementById('load-data-btn');
-            const fileInput = document.getElementById('file-input');
-            
-            loadDataBtn.addEventListener('click', () => fileInput.click());
-
-            fileInput.addEventListener('change', (event) => {
+            document.getElementById('load-data-btn').addEventListener('click', () => document.getElementById('file-input').click());
+            document.getElementById('file-input').addEventListener('change', (event) => {
                 const file = event.target.files[0];
-                if (!file) {
-                    return;
-                }
+                if (!file) return;
                 const reader = new FileReader();
-                reader.onload = (e) => {
-                    try {
-                        const data = JSON.parse(e.target.result);
-                        updateDashboardWithData(data);
-                    } catch (err) {
-                        alert('Error parsing JSON file. Please check the file format and console for details.');
-                        console.error(err);
-                    }
-                };
+                reader.onload = (e) => { try { const data = JSON.parse(e.target.result); updateDashboardWithData(data); } catch (err) { alert('Error parsing JSON file.'); console.error(err); } };
                 reader.readAsText(file);
             });
 
             generateInsightsBtn.addEventListener('click', generateInsights);
-
-            const closeModalBtn = document.getElementById('close-modal-btn');
-            closeModalBtn.addEventListener('click', () => {
-                document.getElementById('insights-modal').classList.add('hidden');
-                document.getElementById('insights-modal').classList.remove('flex');
+            document.getElementById('close-modal-btn').addEventListener('click', () => {
+                const modal = document.getElementById('insights-modal');
+                modal.classList.add('hidden'); modal.classList.remove('flex');
             });
         });
-        
     </script>
 </body>
 </html>
-
-
 
