@@ -2,7 +2,7 @@
 
 This is an interactive, single-page web application that demonstrates a modern dashboard for analyzing telecommunications data. The project is built entirely with front-end technologies and uses Google's Gemini API to generate AI-powered insights from the displayed data.
 
-**Live Demo:** [Link to your live GitHub Pages URL]
+**Live Demo:** https://tonymah2024.github.io/telecom-dashboard/
 
 ---
 
